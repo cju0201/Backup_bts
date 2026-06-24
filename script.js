@@ -389,7 +389,7 @@ const ARMY_BOMB_AVATAR_SVG = `
   <path d="M88 21l8-8M97 36h12M32 21l-8-8M21 36H9" stroke="#f2d583" stroke-width="5" stroke-linecap="round"/>
 </svg>`;
 const MAX_HISTORY_ITEMS = 10;
-const MAX_ARMY_MESSAGES = 80;
+const MAX_ARMY_MESSAGES = 1000;
 const ARMY_MESSAGE_LIMIT = 180;
 const PRELOAD_TIMEOUT_MS = 7000;
 const BUCKET_IMAGE_URL = 'https://zany-harlequin-wggywxadhw.edgeone.app/9.png';
@@ -762,11 +762,13 @@ async function addArmyMessage() {
 
     const messages = readArmyMessages();
     const nextNumber = messages.reduce((max, item) => Math.max(max, Number(item.number) || 0), 0) + 1;
+    const createdAt = Date.now();
     const message = {
+        id: createArmyMessageId(createdAt, nextNumber),
         number: nextNumber,
         target: getSelectedArmyTarget(),
         text: text.slice(0, ARMY_MESSAGE_LIMIT),
-        createdAt: Date.now()
+        createdAt
     };
 
     messages.unshift(message);
@@ -801,11 +803,13 @@ function readLocalArmyMessages() {
             ? parsed
                 .filter(item => item && typeof item.text === 'string' && item.text.trim())
                 .map((item, index) => ({
+                    id: typeof item.id === 'string' && item.id ? item.id : createArmyMessageId(item.createdAt, item.number || index + 1),
                     number: Number.isInteger(item.number) && item.number > 0 ? item.number : index + 1,
                     target: normalizeArmyTarget(item.target),
                     text: item.text.trim().slice(0, ARMY_MESSAGE_LIMIT),
                     createdAt: Number(item.createdAt) || Date.now()
                 }))
+                .sort((a, b) => (b.createdAt - a.createdAt) || (b.number - a.number))
                 .slice(0, MAX_ARMY_MESSAGES)
             : [];
     } catch (error) {
@@ -873,6 +877,7 @@ function getArmyMessagesSignature(messages) {
     return messages
         .map(message => [
             message.number,
+            message.id,
             message.target,
             message.text,
             message.createdAt
@@ -924,6 +929,7 @@ async function postSharedArmyMessage(message) {
         body: JSON.stringify({
             target: normalizeArmyTarget(message.target),
             text: message.text,
+            id: message.id,
             createdAt: message.createdAt
         })
     });
@@ -940,14 +946,20 @@ function normalizeArmyMessages(messages) {
         ? messages
             .filter(item => item && typeof item.text === 'string' && item.text.trim())
             .map((item, index) => ({
+                id: typeof item.id === 'string' && item.id ? item.id : createArmyMessageId(item.createdAt, item.number || index + 1),
                 number: Number.isInteger(item.number) && item.number > 0 ? item.number : index + 1,
                 target: normalizeArmyTarget(item.target),
                 text: item.text.trim().slice(0, ARMY_MESSAGE_LIMIT),
                 createdAt: Number(item.createdAt) || Date.now()
             }))
-            .sort((a, b) => b.createdAt - a.createdAt)
+            .sort((a, b) => (b.createdAt - a.createdAt) || (b.number - a.number))
             .slice(0, MAX_ARMY_MESSAGES)
         : [];
+}
+
+function createArmyMessageId(timestamp = Date.now(), number = 0) {
+    const randomPart = window.crypto?.randomUUID?.() || Math.random().toString(36).slice(2);
+    return `${Number(timestamp) || Date.now()}-${Number(number) || 0}-${randomPart}`;
 }
 
 function getSelectedArmyTarget() {
