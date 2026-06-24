@@ -325,6 +325,13 @@ let currentResult = null;
 let fortuneQueue = [];
 let preloadPromise = Promise.resolve();
 let assetsReady = false;
+let armyMessagesCache = [];
+let armyWallLoadedFromApi = false;
+let selectedArmyMessageTarget = '站主';
+let armyWallRefreshTimer = null;
+let armyWallEventSource = null;
+let armyWallLastSignature = '';
+let isArmyWallRefreshing = false;
 
 const bgMusic = document.getElementById('bg-music');
 const startBtn = document.getElementById('start-btn');
@@ -345,11 +352,45 @@ const historyToggle = document.getElementById('history-toggle');
 const historyPanel = document.getElementById('history-panel');
 const historyListEl = document.getElementById('history-list');
 const historyCountEl = document.getElementById('history-count');
+const armyWallForm = document.getElementById('army-wall-form');
+const armyMessageInput = document.getElementById('army-message-input');
+const armyMessageListEl = document.getElementById('army-message-list');
+const armyMessageCountEl = document.getElementById('army-message-count');
+const armyMessageLimitEl = document.getElementById('army-message-limit');
+const armyWallEmptyEl = document.getElementById('army-wall-empty');
+const armyWallNoteEl = document.getElementById('army-wall-note');
 const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
 const FORTUNE_QUEUE_KEY = 'btsUniverseFortuneQueue';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
+const ARMY_WALL_KEY = 'btsArmyMessageWall';
+const ARMY_WALL_API_URL = window.BTS_ARMY_WALL_API_URL || '';
+const ARMY_MESSAGE_TARGETS = ['站主', '防彈', '自己', '阿米們'];
+const ARMY_BOMB_AVATAR_SVG = `
+<svg class="army-message-avatar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="阿米棒頭像">
+  <defs>
+    <radialGradient id="army-avatar-globe" cx="40%" cy="28%" r="66%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="48%" stop-color="#f5e7ff"/>
+      <stop offset="100%" stop-color="#b996ff"/>
+    </radialGradient>
+    <linearGradient id="army-avatar-handle" x1="42" y1="54" x2="86" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f8f1ff"/>
+      <stop offset="55%" stop-color="#cdb6ff"/>
+      <stop offset="100%" stop-color="#7b4dff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="34" r="27" fill="#d8c3ff" opacity=".28"/>
+  <circle cx="64" cy="34" r="23" fill="url(#army-avatar-globe)" stroke="#fff" stroke-width="4"/>
+  <path d="M48 54h32l5 9H43z" fill="#efe5ff" stroke="#7b4dff" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="51" y="61" width="26" height="50" rx="10" fill="url(#army-avatar-handle)" stroke="#4a148c" stroke-width="3"/>
+  <path d="M58 70h12M58 80h12" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  <path d="M50 114h28" stroke="#c5a059" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 21l8-8M97 36h12M32 21l-8-8M21 36H9" stroke="#f2d583" stroke-width="5" stroke-linecap="round"/>
+</svg>`;
 const MAX_HISTORY_ITEMS = 10;
+const MAX_ARMY_MESSAGES = 80;
+const ARMY_MESSAGE_LIMIT = 180;
 const PRELOAD_TIMEOUT_MS = 7000;
 const BUCKET_IMAGE_URL = 'https://zany-harlequin-wggywxadhw.edgeone.app/9.png';
 const CARD_BACKGROUND_URL = './assets/bts.jpg';
@@ -359,46 +400,8 @@ initMusicSettings();
 initVisitorCount();
 initFortuneQueue();
 initFortuneHistory();
+initArmyWall();
 preloadPromise = preloadUniverseAssets();
-
-function forceStopMusic() {
-    if (!bgMusic) return;
-
-    bgMusic.pause();
-    bgMusic.currentTime = 0;
-}
-
-function handleMusicVisibility() {
-    if (!bgMusic) return;
-
-    if (document.hidden) {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        return;
-    }
-
-    bgMusic.muted = false;
-
-    // iOS 安全播放模式
-    const tryPlay = () => {
-        const p = bgMusic.play();
-        if (p !== undefined) {
-            p.catch(() => {
-                // iOS 如果失敗，等下一次 user interaction
-                console.log("iOS play blocked, waiting gesture");
-            });
-        }
-    };
-
-    // 確保 ready
-    if (bgMusic.readyState >= 2) {
-        tryPlay();
-    } else {
-        bgMusic.addEventListener("canplay", tryPlay, { once: true });
-    }
-}
-
-document.addEventListener("visibilitychange", handleMusicVisibility);
 
 // 點擊開始
 if (startBtn) {
@@ -703,6 +706,294 @@ function renderFortuneHistory() {
             </div>
         </article>
     `).join('');
+}
+
+async function initArmyWall() {
+    armyMessagesCache = readLocalArmyMessages();
+    renderArmyWall();
+    updateArmyMessageLimit();
+    updateArmyWallNote();
+
+    if (armyMessageInput) {
+        armyMessageInput.addEventListener('input', updateArmyMessageLimit);
+    }
+
+    if (armyWallForm) {
+        armyWallForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            await addArmyMessage();
+        });
+    }
+
+    document.querySelectorAll('.message-prompts button[data-prompt]').forEach(button => {
+        button.addEventListener('click', () => {
+            if (!armyMessageInput) return;
+            setSelectedArmyTarget(button.dataset.target);
+            armyMessageInput.value = button.dataset.prompt || '';
+            armyMessageInput.focus();
+            updateArmyMessageLimit();
+        });
+    });
+
+    if (ARMY_WALL_API_URL) {
+        await refreshSharedArmyMessages();
+        connectArmyWallStream();
+        armyWallRefreshTimer = window.setInterval(refreshSharedArmyMessages, 30000);
+        window.addEventListener('focus', refreshSharedArmyMessages);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                refreshSharedArmyMessages();
+                if (!armyWallEventSource || armyWallEventSource.readyState === EventSource.CLOSED) {
+                    connectArmyWallStream();
+                }
+            }
+        });
+    }
+}
+
+async function addArmyMessage() {
+    if (!armyMessageInput) return;
+
+    const text = armyMessageInput.value.trim();
+    if (!text) {
+        armyMessageInput.focus();
+        return;
+    }
+
+    const messages = readArmyMessages();
+    const nextNumber = messages.reduce((max, item) => Math.max(max, Number(item.number) || 0), 0) + 1;
+    const message = {
+        number: nextNumber,
+        target: getSelectedArmyTarget(),
+        text: text.slice(0, ARMY_MESSAGE_LIMIT),
+        createdAt: Date.now()
+    };
+
+    messages.unshift(message);
+    setArmyMessages(messages.slice(0, MAX_ARMY_MESSAGES));
+
+    if (ARMY_WALL_API_URL) {
+        try {
+            const sharedMessages = await postSharedArmyMessage(message);
+            if (sharedMessages.length) {
+                armyWallLoadedFromApi = true;
+                setArmyMessages(sharedMessages);
+            } else {
+                await refreshSharedArmyMessages();
+            }
+        } catch (error) {
+            updateArmyWallNote('留言已先保存在這台裝置，雲端留言牆暫時連不上。');
+        }
+    }
+
+    armyWallForm?.reset();
+    updateArmyMessageLimit();
+}
+
+function readArmyMessages() {
+    return armyWallLoadedFromApi || armyMessagesCache.length ? armyMessagesCache : readLocalArmyMessages();
+}
+
+function readLocalArmyMessages() {
+    try {
+        const parsed = JSON.parse(localStorage.getItem(ARMY_WALL_KEY) || '[]');
+        return Array.isArray(parsed)
+            ? parsed
+                .filter(item => item && typeof item.text === 'string' && item.text.trim())
+                .map((item, index) => ({
+                    number: Number.isInteger(item.number) && item.number > 0 ? item.number : index + 1,
+                    target: normalizeArmyTarget(item.target),
+                    text: item.text.trim().slice(0, ARMY_MESSAGE_LIMIT),
+                    createdAt: Number(item.createdAt) || Date.now()
+                }))
+                .slice(0, MAX_ARMY_MESSAGES)
+            : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveLocalArmyMessages(messages) {
+    try {
+        localStorage.setItem(ARMY_WALL_KEY, JSON.stringify(messages));
+    } catch (error) {
+        alert('留言暫時無法儲存，可能是瀏覽器儲存空間已滿。');
+    }
+}
+
+function renderArmyWall() {
+    const messages = readArmyMessages();
+    if (armyMessageCountEl) armyMessageCountEl.innerText = String(messages.length);
+    if (armyWallEmptyEl) armyWallEmptyEl.hidden = messages.length > 0;
+    if (!armyMessageListEl) return;
+
+    armyMessageListEl.innerHTML = messages.map(message => `
+        <article class="army-message-card">
+            <div class="army-message-avatar" aria-hidden="true">${ARMY_BOMB_AVATAR_SVG}</div>
+            <div>
+                <div class="army-message-meta">
+                    <span class="army-message-name">阿米${message.number}號</span>
+                    <time class="army-message-time" datetime="${new Date(message.createdAt).toISOString()}">${formatArmyMessageTime(message.createdAt)}</time>
+                </div>
+                <p class="army-message-target">To：${escapeHtml(normalizeArmyTarget(message.target))}</p>
+                <p class="army-message-text">${escapeHtml(message.text)}</p>
+            </div>
+        </article>
+    `).join('');
+}
+
+async function refreshSharedArmyMessages() {
+    if (isArmyWallRefreshing) return;
+    isArmyWallRefreshing = true;
+    try {
+        const messages = await fetchSharedArmyMessages();
+        armyWallLoadedFromApi = true;
+        setArmyMessages(messages);
+        updateArmyWallNote('留言會匿名顯示在留言牆上，所有阿米都能看到彼此留下的話。');
+    } catch (error) {
+        updateArmyWallNote('目前顯示這台裝置保留的留言，雲端留言牆暫時連不上。');
+    } finally {
+        isArmyWallRefreshing = false;
+    }
+}
+
+function setArmyMessages(messages) {
+    const normalizedMessages = normalizeArmyMessages(messages);
+    const nextSignature = getArmyMessagesSignature(normalizedMessages);
+    if (nextSignature === armyWallLastSignature) return false;
+
+    armyMessagesCache = normalizedMessages;
+    armyWallLastSignature = nextSignature;
+    saveLocalArmyMessages(normalizedMessages);
+    renderArmyWall();
+    return true;
+}
+
+function getArmyMessagesSignature(messages) {
+    return messages
+        .map(message => [
+            message.number,
+            message.target,
+            message.text,
+            message.createdAt
+        ].join('|'))
+        .join('~');
+}
+
+function connectArmyWallStream() {
+    if (!window.EventSource || !ARMY_WALL_API_URL) return;
+    if (armyWallEventSource && armyWallEventSource.readyState !== EventSource.CLOSED) return;
+
+    const streamUrl = new URL(ARMY_WALL_API_URL, window.location.href);
+    streamUrl.searchParams.set('stream', '1');
+    armyWallEventSource = new EventSource(streamUrl.toString());
+
+    armyWallEventSource.addEventListener('messages', event => {
+        try {
+            const data = JSON.parse(event.data);
+            const rawMessages = Array.isArray(data) ? data : data.messages;
+            armyWallLoadedFromApi = true;
+            setArmyMessages(rawMessages);
+            updateArmyWallNote('留言會匿名顯示在留言牆上，所有阿米都能看到彼此留下的話。');
+        } catch (error) {
+            refreshSharedArmyMessages();
+        }
+    });
+
+    armyWallEventSource.onerror = () => {
+        window.setTimeout(() => {
+            if (armyWallEventSource?.readyState === EventSource.CLOSED) {
+                connectArmyWallStream();
+            }
+        }, 3000);
+    };
+}
+
+async function fetchSharedArmyMessages() {
+    const response = await fetch(ARMY_WALL_API_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error('留言牆讀取失敗');
+    const data = await response.json();
+    const rawMessages = Array.isArray(data) ? data : data.messages;
+    return normalizeArmyMessages(rawMessages);
+}
+
+async function postSharedArmyMessage(message) {
+    const response = await fetch(ARMY_WALL_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            target: normalizeArmyTarget(message.target),
+            text: message.text,
+            createdAt: message.createdAt
+        })
+    });
+    if (!response.ok) throw new Error('留言送出失敗');
+    const data = await response.json().catch(() => ({}));
+    if (Array.isArray(data)) return normalizeArmyMessages(data);
+    if (Array.isArray(data.messages)) return normalizeArmyMessages(data.messages);
+    if (data.message) return normalizeArmyMessages([data.message, ...readArmyMessages()]);
+    return [];
+}
+
+function normalizeArmyMessages(messages) {
+    return Array.isArray(messages)
+        ? messages
+            .filter(item => item && typeof item.text === 'string' && item.text.trim())
+            .map((item, index) => ({
+                number: Number.isInteger(item.number) && item.number > 0 ? item.number : index + 1,
+                target: normalizeArmyTarget(item.target),
+                text: item.text.trim().slice(0, ARMY_MESSAGE_LIMIT),
+                createdAt: Number(item.createdAt) || Date.now()
+            }))
+            .sort((a, b) => b.createdAt - a.createdAt)
+            .slice(0, MAX_ARMY_MESSAGES)
+        : [];
+}
+
+function getSelectedArmyTarget() {
+    return normalizeArmyTarget(selectedArmyMessageTarget);
+}
+
+function setSelectedArmyTarget(target) {
+    const normalized = normalizeArmyTarget(target);
+    selectedArmyMessageTarget = normalized;
+    document.querySelectorAll('.message-prompts button[data-target]').forEach(button => {
+        const isActive = normalizeArmyTarget(button.dataset.target) === normalized;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+    });
+}
+
+function normalizeArmyTarget(target) {
+    return ARMY_MESSAGE_TARGETS.includes(target) ? target : '站主';
+}
+
+function updateArmyWallNote(text) {
+    if (!armyWallNoteEl) return;
+    armyWallNoteEl.innerText = text || (
+        ARMY_WALL_API_URL
+            ? '留言會匿名顯示在留言牆上，所有阿米都能看到彼此留下的話。'
+            : '留言會匿名顯示在留言牆上；接上共享留言 API 後，所有阿米都能看到彼此留下的話。'
+    );
+}
+
+function updateArmyMessageLimit() {
+    if (!armyMessageLimitEl) return;
+    const length = armyMessageInput?.value.length || 0;
+    armyMessageLimitEl.innerText = `${length}/${ARMY_MESSAGE_LIMIT}`;
+}
+
+function formatArmyMessageTime(timestamp) {
+    try {
+        return new Intl.DateTimeFormat('zh-TW', {
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        }).format(new Date(timestamp));
+    } catch (error) {
+        return '剛剛';
+    }
 }
 
 function preloadImage(src, timeoutMs = 5000) {
