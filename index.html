@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>防彈宇宙籤詩</title>
-    <link rel="stylesheet" href="./style.css?v=20260622-buttons-fixed">
+    <link rel="stylesheet" href="./style.css?v=20260624-army-wall">
 
   </head>
     
@@ -94,6 +94,44 @@
             </div>
 
         </div> 
+        <section class="army-wall" id="army-wall" aria-labelledby="army-wall-title">
+          <div class="army-wall-header">
+            <div>
+              <p class="army-wall-kicker">FROM ARMY, WITH LOVE</p>
+              <h2 id="army-wall-title">ARMY 留言牆</h2>
+            </div>
+            <div class="army-wall-counter">
+              <span id="army-message-count">0</span>
+              <small>則留言</small>
+            </div>
+          </div>
+
+          <form class="army-wall-form" id="army-wall-form">
+            <div class="message-prompts" aria-label="快速留言靈感">
+              <button type="button" data-target="站主" data-prompt="謝謝你做了這個宇宙籤詩，今天也被治癒了。" aria-pressed="true">給站主</button>
+              <button type="button" data-target="防彈" data-prompt="防彈啊，謝謝你們讓我在辛苦的日子裡也能繼續相信自己。" aria-pressed="false">給防彈</button>
+              <button type="button" data-target="自己" data-prompt="親愛的自己，慢慢來也沒關係，你已經很努力了。" aria-pressed="false">給自己</button>
+              <button type="button" data-target="阿米們" data-prompt="給每一位正在努力的阿米：今天也辛苦了，我們一起慢慢變好。" aria-pressed="false">給阿米們</button>
+            </div>
+            <label class="message-field" for="army-message-input">
+              <span>想對站主、防彈、自己，或阿米們說什麼？</span>
+              <textarea id="army-message-input" maxlength="180" rows="4" placeholder="把心裡的話留在這片紫色星空裡..."></textarea>
+            </label>
+            <div class="army-wall-tools">
+              <div class="army-wall-actions">
+                <span id="army-message-limit">0/180</span>
+                <button class="btn army-wall-submit" type="submit">送出留言</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="army-wall-board" id="army-wall-board">
+            <p class="army-wall-empty" id="army-wall-empty">還沒有留言，成為第一位在這裡點亮阿米棒的人吧。</p>
+            <div class="army-message-list" id="army-message-list"></div>
+          </div>
+
+          <p class="army-wall-note" id="army-wall-note">留言會匿名顯示在留言牆上。</p>
+        </section>
     </div>
 
 </div>
@@ -101,7 +139,10 @@
     <p>© 2026 防彈宇宙籤詩 INC. ALL RIGHTS RESERVED CJU.</p>
     <p>本平台非官方關聯，僅作為 A.R.M.Y 在宇宙繁星軌道中聆聽音樂</p>
   </footer>
-    <script src="./script.js?v=20260622-buttons-fixed"></script>
+    <script>
+      window.BTS_ARMY_WALL_API_URL = 'https://bts-army-wall-api.bts-army-wall-api.workers.dev';
+    </script>
+    <script src="./script.js?v=20260624-army-wall-live"></script>
 
   </body>
   
