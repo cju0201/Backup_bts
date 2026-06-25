@@ -308,6 +308,55 @@ const btsUniverseFortunes = [
         lyrics: "Standing in the fire next to you",
         cover: "./assets/covers/gol.png",
         spotify: "https://open.spotify.com/track/2KslE17cAJNHTsI2MI0jb2?si=232495cffbcd4f68", apple: "https://music.apple.com/tw/song/standing-next-to-you/1709554997"
+    },
+{
+        song: "NEURON",
+        message: "回到最初的起點，感受血液裡那份熱血的初心。 這不是結束，而是帶著靈魂的節奏，重新出發的時刻。",
+        lyrics: "I’ll tell you again. We’ll never ever give up, forever ",
+        cover: "./assets/covers/ots.png",
+        spotify: "https://open.spotify.com/track/11sirgYaEutV40tkvgpHN6?si=396ab7979243434d", apple: "https://music.apple.com/tw/song/neuron/1730608094"
+    },
+{
+        song: "Closer Than This",
+        message: "即使短暫鬆開了手，也不要輕易哭泣。那份溫柔的約定從未改變，春天來臨時一定會重逢。",
+        lyrics: "雖然暫時放開手，但這只是個小小的休止符 ",
+        cover: "./assets/covers/closer.png",
+        spotify: "https://open.spotify.com/track/3k6q0O9JnO2GhvD6C8fs20?si=f02162155fbb49c3", apple: "https://music.apple.com/tw/song/closer-than-this/1721409260"
+    },
+{
+        song: "Heaven",
+        message: "別人的評價不需要放在心上。讓心情保持輕鬆，把平靜留給自己，這就是最好的天堂。",
+        lyrics: "Feelin' so full here with me. Everything's untakeable",
+        cover: "./assets/covers/rpwp.png",
+        spotify: "https://open.spotify.com/track/1B9HE8h6ZnljGk0LZ2H30D?si=a9293409e7364e81", apple: "https://music.apple.com/tw/song/heaven/1742630133"
+    },
+{
+        song: "Christmas Tree",
+        message: "當外面的世界變得冰冷時，冬日裡突然亮起的溫暖燈火，會安靜的陪伴、一直守候在你身旁。",
+        lyrics: "I just want to be where you are",
+        cover: "./assets/covers/tree.png",
+        spotify: "https://open.spotify.com/track/186NCtNk1tUYS7c2DxgJ7O?si=c57a2b83151c4bde", apple: "https://music.apple.com/tw/song/christmas-tree/1601381961"
+    },
+{
+        song: "Outro : Ego",
+        message: "回頭看，走過的路都是正確的答案。相信當下的選擇吧，接下來的路，只需充滿自信地向前奔跑。",
+        lyrics: "心之所向，行之所向。",
+        cover: "./assets/covers/7.png",
+        spotify: "https://open.spotify.com/track/2LVw2bIK99go1NdD77dUCW?si=7e2912fd85c6430a", apple: "https://music.apple.com/tw/song/outro-ego/1599363213"
+    },
+{
+        song: "Sweet Dream",
+        message: "把白天的疲憊留在門外吧。讓心靈隨著音樂盒般的節奏慢慢沉澱，放心地閉上眼睛，溫暖地沉浸在甜美的夢境中。",
+        lyrics: "You light up my life, you’re like a diamond",
+        cover: "./assets/covers/sd.png",
+        spotify: "https://open.spotify.com/track/1yX9gy5fK02j6nBnGJ1S3k?si=9e0ef0695d7744d1", apple: "https://music.apple.com/tw/song/sweet-dreams/1798229715"
+    },
+{
+        song: "Life Goes On",
+        message: "就算世界突然改變，那些珍貴的回憶也不會消失。別害怕，時間在流轉，生活依然會溫柔地繼續前進。",
+        lyrics: "不會再害怕，奔跑直到我人生的盡頭。",
+        cover: "./assets/covers/day.png",
+        spotify: "https://open.spotify.com/track/7gv3UYPh05ZDP7Io5BIsn7?si=6e166391c656456e", apple: "https://music.apple.com/tw/song/life-goes-on/1681824537"
     }
 ];
 
