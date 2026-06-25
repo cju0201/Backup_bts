@@ -1,313 +1,824 @@
 // ─── 30 首防彈神曲療癒籤詩資料庫 ───
 const btsUniverseFortunes = [
     {
+
         song: "Magic Shop",
+
         message: "當現實讓你感到迷茫時，別忘了心中那扇祕密的門。打開它，我們會在這裡端上一杯溫熱的茶，靜靜聆聽你的心聲。",
+
         lyrics: "你所有的解答，在你所找到的這個地方",
+
         cover: "./assets/covers/tear.png",
+
         spotify: "https://open.spotify.com/track/5MTGPkmiUuud9NkA0sl2nI?si=c4f2d30608bb4e71",
+
         apple: "https://music.apple.com/tw/song/magic-shop/1598661252"
+
     },
+
     {
+
         song: "Mikrokosmos",
+
         message: "在漆黑的深夜裡，不要感到孤單。在這個擁有70億種光芒的世界中，你正在散發著自己獨一無二的色彩，點綴著最美的夜空。",
+
         lyrics: "夜越是漆黑，那星光將更加閃亮",
+
         cover: "./assets/covers/persona.png",
+
         spotify: "https://open.spotify.com/track/0jSccBRnhNU4KtACMQPvco?si=436c5999dc65457f",
+
         apple: "https://music.apple.com/tw/song/mikrokosmos/1599172213"
+
     },
+
     {
+
         song: "Spring Day",
+
         message: "越過無比漫長且寒冷的冬日末端，直到春風再次徐徐吹來、直到花朵重新綻放。請在那裡再停留一陣子，最渴望的相遇一定會到來。",
+
         lyrics: "直到春日再次來臨，直到花朵盛開之時，請再留在那一下",
+
         cover: "./assets/covers/ynwa.png",
+
         spotify: "https://open.spotify.com/track/2j1fFjWHCI9KJSwcuYAOyF?si=26514c9b49d1439c",
+
         apple: "https://music.apple.com/tw/song/spring-day/1596529381"
+
     },
+
     {
+
         song: "Life Goes On",
+
         message: "生活有時像突然襲來的陣雨，世界可能有些停滯，但不要害怕。不管遇到什麼困難，生活依然在溫柔地前行。",
+
         lyrics: "握住我的手，朝著那未來 我們一起奔跑吧",
+
         cover: "./assets/covers/be.png",
+
         spotify: "https://open.spotify.com/track/5FVbvttjEvQ8r2BgUcJgNg?si=f36f777d2a874847",
+
         apple: "https://music.apple.com/tw/song/life-goes-on/1596532189"
+
     },
+
     {
+
         song: "Answer: Love Myself",
+
         message: "不需再用嚴苛的眼光審視自己了。那些不完美的疤痕、犯錯的昨日，全都是屬於你美麗生命星空的一部分。",
+
         lyrics: "也許比起愛著誰，要愛著自己反而更難",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/2X3UgVLSA4wYriGIQyYmMA?si=c2718b1aa1384bbc",
+
         apple: "https://music.apple.com/tw/song/answer-love-myself/1598730982"
+
     },
+
     {
+
         song: "00:00 (Zero O'Clock)",
+
         message: "當午夜十二點的秒針與分針重合，今天的疲憊與委屈都將化為烏有。世界會為你短暫屏住呼吸，明天，你一定會被幸福緊緊包圍。",
+
         lyrics: "Zero O’Clock, and you gonna be happy",
+
         cover: "./assets/covers/7.png",
+
         spotify: "https://open.spotify.com/track/6fqaMyg066xlukvUJWdM2T?si=c4bef2f2e8f4469f",
+
         apple: "https://music.apple.com/tw/song/00-00-zero-oclock/1599362879"
+
     },
+
     {
+
         song: "Epiphany",
+
         message: "雖然不夠完美，但這熠熠生輝的靈魂多麼美麗。在這個世界上，你最應該去愛、去呵護的那個人，就是你自己。",
+
         lyrics: "雖然有點不足，但還是非常的美麗，I’m the one I should love",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/6L88EH68XwlaXwvChlTS41?si=2776c45a42854263",
+
         apple: "https://music.apple.com/tw/song/epiphany/1598730973"
+
     },
+
     {
+
         song: "Whalien 52",
+
         message: "即便覺得自己像是在深海中用52赫茲獨自歌唱的鯨魚、孤獨且不被理解。請繼續唱下去，相同頻率的溫暖終會破浪而來。",
+
         lyrics: "我朝向未來而去，相信著那蔚藍的大海，還有相信我的赫茲",
+
         cover: "./assets/covers/hyyh2.png",
+
         spotify: "https://open.spotify.com/track/1otHp4s8IRCLn1JZcVrNhz?si=7f346362a02d4417",
+
         apple: "https://music.apple.com/tw/song/whalien-52/1598662268"
+
     },
+
     {
+
         song: "Stay Gold",
+
         message: "無論這個世界多麼冰冷，漫漫長夜多麼無止境。請永遠保持你心中那份金黃色的純真，不要迷失，美好的光芒會永遠守護著你。",
+
         lyrics: "在一個令人感到寒冷的世界，你必須保有信念",
+
         cover: "./assets/covers/mos journey.png",
+
         spotify: "https://open.spotify.com/track/0UwQTbq7ZtBJ7v530mpaxP?si=90cbd65dfa3146fb",
+
         apple: "https://music.apple.com/tw/song/stay-gold/1517969555"
+
     },
+
     {
+
         song: "Yet To Come",
+
         message: "過往的風景很美，但相信我，你生命中最輝煌、最充滿希望的時刻尚未到來。前方的未來，還有無盡的精彩等著你。",
+
         lyrics: "You and I, best moment is yet to come\n那最美好的瞬間還在明天之後",
+
         cover: "./assets/covers/proof.png",
+
         spotify: "https://open.spotify.com/track/10SRMwb9EuVS1K9rYsBfHQ?si=09f5feef63484a8b",
+
         apple: "https://music.apple.com/tw/song/yet-to-come/1627575774"
+
     },
+
     { song: "Dynamite", message: "今天充滿著無限的歡樂與正能量，像夜空中的璀璨煙火一樣，盡情釋放你的熱情並點燃黑夜吧！", lyrics: "Shining through the city with a little funk and soul", cover: "./assets/covers/be.png", spotify: "https://open.spotify.com/track/5QDLhrAOJJdNAmCTJ8xMyW?si=4a722fc3cb9d442c", apple: "https://music.apple.com/tw/song/dynamite/1596532400" },
+
     { song: "Butter", message: "像絲滑的奶油一樣融化生活中的所有小煩惱，今天不論做什麼事情，你都能無比流暢、順心無阻！", lyrics: "Smooth like butter, like a criminal undercover", cover: "./assets/covers/butter.png", spotify: "https://open.spotify.com/track/1mWdTewIgB3gtBM3TOSFhB?si=eb1d9777a16a4447", apple: "https://music.apple.com/tw/song/butter/1598660389" },
+
     { song: "Permission to Dance", message: "不需要任何人的允許，也不需要去管繁瑣的限制。今天就聽從你內心的節奏，快樂地起舞吧！", lyrics: "Ain't nothing that can stop how we move, yeah", cover: "./assets/covers/ptd.png", spotify: "https://open.spotify.com/track/3XYRV7ZSHqIRDG87DKTtry?si=040489015129469a", apple: "https://music.apple.com/tw/song/permission-to-dance/1598661441" },
+
     { song: "ON", message: "讓大風大浪和考驗迎面而來吧！你體內蘊藏的力量早已做好準備，所有的痛苦都將化為重生的羽翼。", lyrics: "Bring the pain, oh carry on", cover: "./assets/covers/7.png", spotify: "https://open.spotify.com/track/0fZRNhPJ4AGmwY7rkpdbqK?si=544e726aab154014", apple: "https://music.apple.com/tw/song/on/1599362870" },
+
     { song: "Run BTS", message: "不需要猶豫，相信雙腳走過的每一步。帶著最初的信念，朝著夢想全力奔跑吧！", lyrics: "Run bulletproof run, yeah you gotta run", cover: "./assets/covers/proof.png", spotify: "https://open.spotify.com/track/69xohKu8C1fsflYAiSNbwM?si=526a470ac3d54c4a", apple: "https://music.apple.com/tw/song/run-bts/1627575780" },
+
     { song: "Fire", message: "隨心所欲地去生活吧！反正這是專屬於你的人生。今天偶爾放鬆、偷懶，哪怕輸了也沒有關係！", lyrics: "隨便怎麼活都行，反正是你自己的", cover: "./assets/covers/yf.png", spotify: "https://open.spotify.com/track/0aE3V0zgSD2YwkEHW42gxG?si=491b98b268c5463f", apple: "https://music.apple.com/tw/song/burning-up-fire/1598662129" },
+
     { song: "IDOL", message: "無論世界怎麼評價你，無論你在別人眼裡是好是壞。深深愛著此時此刻正在咬牙努力、無比真實的自己。", lyrics: "You can't stop me loving myself", cover: "./assets/covers/answer.png", spotify: "https://open.spotify.com/track/1e8J3XClxZbFmvIHLI8CE4?si=659d30c31dd647d0", apple: "https://music.apple.com/tw/song/idol/1598730980" },
+
     { song: "Boy With Luv", message: "高調的成就也許很炫目，但真正的幸福往往藏在日常微小的事情中。你的每一步都踩著充滿愛的旋律。", lyrics: "Love is nothing stronger", cover: "./assets/covers/persona.png", spotify: "https://open.spotify.com/track/4a9tbd947vo9K8Vti9JwcI?si=bb23427e6b904364", apple: "https://music.apple.com/tw/song/boy-with-luv-feat-halsey/1599172208" },
+
     { song: "Fake Love", message: "勇敢脫掉那些讓你不快樂的偽裝與迎合。擁抱真實的自己，去追尋能真正照亮你靈魂的純粹之愛。", lyrics: "I'm so sick of this fake love", cover: "./assets/covers/tear.png", spotify: "https://open.spotify.com/track/6m1TWFMeon7ai9XLOzdbiR?si=22beec9a52b845b7", apple: "https://music.apple.com/tw/song/fake-love/1598660938" },
+
     { song: "Blood Sweat & Tears", message: "毫無保留地釋放你的狂熱與靈魂吧！沉浸在自己真正熱愛的事情中，那專注的模樣正在散發極致的光彩。", lyrics: "我最後的舞步，全都帶走吧", cover: "./assets/covers/wings.png", spotify: "https://open.spotify.com/track/2u54HNQamwFuOMLSuhSRom?si=4bc9dd396c8440d5", apple: "https://music.apple.com/tw/song/blood-sweat-tears/1596532481" },
+
     { song: "DNA", message: "今天遇到的所有巧合與好運都不是偶然。這一切都是刻在宇宙基因與宿命軌道裡的必然緣分。", lyrics: "我們是找到彼此命運的兩個人", cover: "./assets/covers/her.png", spotify: "https://open.spotify.com/track/3uRLwBjI2TahxslcMTvpFs?si=1211bf95c1e54eb5", apple: "https://music.apple.com/tw/song/dna/1596529066" },
+
     { song: "Not Today", message: "今天絕不是向命運低頭或放棄的日子！只要還能奔跑就全力前行，即便辛苦，也要堅定走下去！", lyrics: "沒辦法用走的，就用爬的吧!即使用爬的也要gear up", cover: "./assets/covers/ynwa.png", spotify: "https://open.spotify.com/track/3wyrhwPpV8uhMMEms4vG3X?si=43483be036e747f3", apple: "https://music.apple.com/tw/song/not-today/1596529383" },
+
     { song: "Save Me", message: "感到即將墜落或無助的時候，試著伸出雙手吧。那些溫慢的雙手與治癒的旋律，一定會穩穩拉住你。", lyrics: "伸出手吧，Save me save me", cover: "./assets/covers/yf.png", spotify: "https://open.spotify.com/track/7bxGcILuAjkZzaveU28ZJS?si=8d92ee814803419d", apple: "https://music.apple.com/tw/song/save-me/1598662137" },
+
     { song: "I NEED U", message: "儘管生活總會讓人跌跌撞撞，但心中那份對目標與夢想的炙熱渴望，正是推動你繼續前進的最美動力。", lyrics: "為何知道會受傷，仍舊如此需要你", cover: "./assets/covers/hyyh1.png", spotify: "https://open.spotify.com/track/3wQnyXNFXNUEOBt1pb4urq?si=727be90c708d41b8", apple: "https://music.apple.com/tw/song/i-need-u/1596533075" },
+
     { song: "Run", message: "就算跌倒、受傷、甚至流下眼淚也無所謂。只要目光依然看著終點、朝著夢想狂奔，過程就無比璀璨。",
+
         lyrics: "再次 Run Run Run 即使跌倒也沒關係",
+
         cover: "./assets/covers/hyyh2.png",
+
         spotify: "https://open.spotify.com/track/3G1aAxWS2Nd17FQs4PWV6X?si=02742cd3d26d4659", apple: "https://music.apple.com/tw/song/run/1597019681"
+
     },
+
     {
+
         song: "Born Singer",
+
         message: "不要因為外界的聲音而動搖。回想一下你最初出發時的熱情與初心，你天生就注定要在自己的舞台上發光。",
+
         lyrics: "每個𣊬間也向自己下定決心 不要失去初心",
+
         cover: "./assets/covers/proof.png",
+
         spotify: "https://open.spotify.com/track/1IthE5GNiRzFN5CVaCa445?si=682f24d4e6334235", apple: "https://music.apple.com/tw/song/born-singer/1627573946"
+
     },
+
     {
+
         song: "Blue & Grey",
+
         message: "被憂鬱與迷茫籠罩時，感到無力也沒關係。這是你溫柔細膩的靈魂正在休息、準備重生。",
+
         lyrics: "希望我不會被吞噬，一定會找到出口",
+
         cover: "./assets/covers/be.png",
+
         spotify: "https://open.spotify.com/track/7Ki0hse0IfXEcXUlpyECbJ?si=6491844a85ec40ca", apple: "https://music.apple.com/tw/song/blue-grey/1596532204"
+
     },
+
     {
+
         song: "You Never Walk Alone",
+
         message: "在這條漫長而充滿未知的人生旅途中，只要一回頭就能找到默默陪伴的溫暖。握緊信念，你永遠不是孤單一人。",
+
         lyrics: "只要能與你在一起，我就會微笑",
+
         cover: "./assets/covers/ynwa.png",
+
         spotify: "https://open.spotify.com/track/2ZbYyDM0pacTwP2odNsdlo?si=c7e51a9ac9d8417d", apple: "https://music.apple.com/tw/song/a-supplementary-story-you-never-walk-alone/1596529626"
+
     },
+
     {
+
         song: "Lights",
+
         message: "無論彼此相隔多麼遙遠，你溫暖的光芒一定會照亮我，而我的歌聲也會在無盡的黑夜中，成為你的引路明燈。",
+
         lyrics: "黑暗之中你的光會照亮我",
+
         cover: "./assets/covers/light.png",
+
         spotify: "https://open.spotify.com/track/44vXWYTcdrejrIQZEoHzl8?si=5f72c5428c714091", apple: "https://music.apple.com/tw/song/lights/1469320480"
+
     },
+
     {
+
         song: "Louder than bombs",
+
         message: "釋放你心中積壓的所有情緒吧！用比炸彈更響亮、更堅定力量打破生活中的陰霾，宇宙正在為你祈禱。",
+
         lyrics: "無論迎來怎樣的波浪，我們也絕不停止對你歌唱",
+
         cover: "./assets/covers/7.png",
+
         spotify: "https://open.spotify.com/track/4Aw8n6r2vuU0KUo1a2nftp?si=d67388dad6314556", apple: "https://music.apple.com/tw/song/louder-than-bombs/1599362866"
+
     },
+
     {
+
         song: "SWIM",
+
         message: "世界是一片汪洋，有時風平浪靜，有時驚濤駭浪。只要你不停下擺動，你終究會破浪而出，游向屬於你的那片晴空。",
+
         lyrics: "You’re the only place that I wanna be, yeah",
+
         cover: "./assets/covers/arirang.png",
+
         spotify: "https://open.spotify.com/track/68lbSrXDORS51pmyjZv712?si=fc814dd905ed4c11", apple: "https://music.apple.com/tw/song/swim/1868862384"
+
     },
+
   {
+
         song: "Merry Go Round",
+
         message: "生活有時像旋轉木馬，在原地反覆兜圈、讓人感到暈眩與疲憊。暫時抽離日常的喧囂，在音樂裡找回前進的節奏吧!",
+
         lyrics: "I wish that I could walk away from pain",
+
         cover: "./assets/covers/arirang.png",
+
         spotify: "https://open.spotify.com/track/3VegC0PZiHjGxb80DER8XU?si=55749657bbf147d4", apple: "https://music.apple.com/tw/song/merry-go-round/1868862386"
+
     },
+
   {
+
         song: "Heartbeat",
+
         message: "你每一次心跳、每一次呼吸，都有其珍貴的意義，宇宙正循著這份溫暖的頻率，引導你走向最美好的彼岸。",
+
         lyrics: "如今我再不需要宇宙，因為你就是我的宇宙",
+
         cover: "./assets/covers/bts-world.png",
+
         spotify: "https://open.spotify.com/track/4ZISkGo0j60iyLbme2rAkC?si=f766ec3837e44165", apple: "https://music.apple.com/tw/song/heartbeat/1694730685"
+
     },
+
   {
+
         song: "Pied Piper",
+
         message: "適度地從現實壓力和課業中逃跑一下也沒關係的。跟著音樂的節奏短暫抽離、放鬆大腦，充飽電後再回去面對挑戰吧！",
+
         lyrics: "即使再掙扎也沒有用，就閉上眼側耳傾聽吧",
+
         cover: "./assets/covers/her.png",
+
         spotify: "https://open.spotify.com/track/1ZPeaPDjQOOC8hw1mNjyjF?si=95544cb305fb4ccc", apple: "https://music.apple.com/tw/song/pied-piper/1596529071"
+
     },
+
 {
+
         song: "Paradise",
+
         message: "不一定每個人都必須擁有宏大夢想。停下喘口氣也沒關係，此時此刻活著的你，本身就是完美的樂園。",
+
         lyrics: "沒有夢想也沒關係，你吐出的每個氣息，已是在樂園",
+
         cover: "./assets/covers/tear.png",
+
         spotify: "https://open.spotify.com/track/1YO4xJXhh9A1Feg9k8xuy2?si=73e4b5d57c634027", apple: "https://music.apple.com/tw/song/paradise/1598661248"
+
     },
+
 {
+
         song: "Moving On",
+
         message: "改變雖讓人不安，但也意味著更成熟的起點。把美好回憶裝進心裡，勇敢地朝著下一個未知出發吧!",
+
         lyrics: "搬家吧，和這充滿感情的地方說再見",
+
         cover: "./assets/covers/hyyh1.png",
+
         spotify: "https://open.spotify.com/track/0jo4304s0u51JHHCv7it9K?si=0d9070d4ab1e4c1d", apple: "https://music.apple.com/tw/song/moving-on/1596533344"
+
     },
+
 {
+
         song: "Tomorrow",
+
         message: "覺得每天都在重複、看不到盡頭嗎？這只是黎明前的黑暗，只要不放棄前進，明天的太陽必為你升起。",
+
         lyrics: "明天到來就會陽光普照，請不要擔心",
+
         cover: "./assets/covers/sla.png",
+
         spotify: "https://open.spotify.com/track/0JkTVcN5kilfMztDb3bKZk?si=1e444bf955b64c66", apple: "https://music.apple.com/tw/song/tomorrow/1596533506"
+
     },
+
 {
+
         song: "Snooze",
+
         message: "累了就安心睡一覺，受傷掉淚也沒關係。當世界滿是荊棘，請記得永遠有雙溫暖的手，會拼命接住你。",
+
         lyrics: "願你的旅程以渺小啟程，以偉大結尾",
+
         cover: "./assets/covers/day.png",
+
         spotify: "https://open.spotify.com/track/4j3M8NrbGSXdMPwEVsnfHE?si=15b680ab79754079", apple: "https://music.apple.com/tw/song/snooze/1681824534"
+
     },
+
 {
+
         song: "People",
+
         message: "世界的一切都在不停流逝與改變，痛苦也是。遇到挫折時別太執著，這不過是人生中一陣微風輕輕吹過。",
+
         lyrics: "人們會變，正如我也變了，世事沒有永恆",
+
         cover: "./assets/covers/d2.png",
+
         spotify: "https://open.spotify.com/track/6HDHaCnH2FCSdEwXrJfEVF?si=777aa174941842b7", apple: "https://music.apple.com/tw/song/people/1679843588"
+
     },
+
 {
+
         song: "Wild Flower",
+
         message: "與其追求瞬間熄滅的耀眼煙火，不如當一朵原野上的野花。在平靜中，綻放出最堅韌的生命力。",
+
         lyrics: "我想在那天空四散， Light a flower, flowerwork Flower flowerwork",
+
         cover: "./assets/covers/indigo.png",
+
         spotify: "https://open.spotify.com/track/1AZjCZSGEjlxUufFQwSszF?si=d2b66c2d63a04f1f", apple: "https://music.apple.com/tw/song/wild-flower-with-%EC%A1%B0%EC%9C%A0%EC%A7%84/1654548658"
+
     },
+
 {
+
         song: "Slow Dancing",
+
         message: "覺得生活步調太快的時候，就放慢腳步吧。跟著這段節奏，和自己的靈魂跳一場輕柔的慢舞。",
+
         lyrics: "Maybe we could be slow dancing until the morning",
+
         cover: "./assets/covers/layover.png",
+
         spotify: "https://open.spotify.com/track/5h1BN75CEh8wdSwE1xrbSe?si=d2e210c1ed2b40b5", apple: "https://music.apple.com/tw/song/slow-dancing/1700687144"
+
     },
+
 {
+
         song: "Euphoria",
+
         message: "這場跨越漫長黑暗的相遇。彼此就是生命中最美的奇蹟，只要牽起手，荒漠也能一秒化為天堂。",
+
         lyrics: "Take my hands now, you are the cause of my euphoria",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/5YMXGBD6vcYP7IolemyLtK?si=a7f599c7dc774934", apple: "https://music.apple.com/tw/song/euphoria/1598730615"
+
     },
+
 {
+
         song: "Set Me Free Pt. 2",
+
         message: "別被別人的眼光或過去的失敗束縛。現在就拍拍翅膀，勇敢地為自己瘋狂飛翔一次吧!",
+
         lyrics: "即使嘲笑我也不停下腳步",
+
         cover: "./assets/covers/face.png",
+
         spotify: "https://open.spotify.com/track/59hBR0BCtJsfIbV9VzCVAp?si=03bb2d7f783e459b", apple: "https://music.apple.com/tw/song/set-me-free-pt-2/1675962543"
+
     },
+
 {
+
         song: "Super Tuna",
+
         message: "生活不需要總是那麼嚴肅，跟著輕快的節奏一起擺動吧！大笑一場，今天就是最快樂的一天。",
+
         lyrics: "哥，請哥把我帶走吧",
+
         cover: "./assets/covers/tuna.png",
+
         spotify: "https://open.spotify.com/track/4pygz13A6EcLL6ti7kqGaf?si=3a038f12fd174585", apple: "https://music.apple.com/tw/song/super-tuna/1772993924"
+
     },
+
 {
+
         song: "Future",
+
         message: "面對未知的明天，感到迷茫是很正常的。專注當下，命運終會帶領你走向最好的未來。",
+
         lyrics: "走向未來的，希望的步伐",
+
         cover: "./assets/covers/jib.png",
+
         spotify: "https://open.spotify.com/track/0Puudh380z6cOCgMaTNm7h?si=fb4570a8676f446b", apple: "https://music.apple.com/tw/song/future/1633261062"
+
     },
+
 {
+
         song: "Dreamers",
+
         message: "致所有勇敢追夢的靈魂！只要心懷信仰，哪怕前路未知，腳下的每一步都在為這段傳奇寫下最美的見證。",
+
         lyrics: "We make it happen, 'cause we believe it",
+
         cover: "./assets/covers/dreamers.png",
+
         spotify: "https://open.spotify.com/track/0jY618wuln0b5b8sCxFgjk?si=d809273417f7441d", apple: "https://music.apple.com/tw/song/dreamers-music-from-the-fifa-world-cup-qatar-2022/1655441868"
+
     },
+
 {
+
         song: "on the street",
+
         message: "腳下的路途或許漫長，但沿途的風景都有其意義。放慢緊繃的步伐吧，希望與溫暖一直都在身邊同行。",
+
         lyrics: "我的雙腳踏實地地行走，無論在哪裡",
+
         cover: "./assets/covers/ots.png",
+
         spotify: "https://open.spotify.com/track/0Gxnj8yTGYxMYyWcR4wawW?si=a412833e04154a92", apple: "https://music.apple.com/tw/song/on-the-street-solo-version-solo-version/1730608079"
+
     },
+
 {
+
         song: "Serendipity",
+
         message: "生命中所有的偶然，都是宇宙精心準備的。相信直覺，張開雙臂去擁抱那些命中注定的美好與奇蹟。",
+
         lyrics: "我們的幸福是被注定的",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/1dS4l6xmdgEhCZTAhdOm4N?si=cd0df591468647c2", apple: "https://music.apple.com/tw/song/serendipity-full-length-edition/1598730619"
+
     },
+
 {
+
         song: "Trivia 承: Love",
+
         message: "因為有了愛，原本粗糙、有稜角的人生才得以被磨平。在生命旅程中，彼此就是活著的最終答案。",
+
         lyrics: "你是將我由「人」變成「愛」的人",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/6bSwpQYEguyMlkCoWiBt3Y?si=712b3140f6434f63", apple: "https://music.apple.com/tw/song/trivia-%E6%89%BF-love/1598730627"
+
     },
+
 {
+
         song: "Scenery",
+
         message: "在平淡的日子裡漫步，收集一路上遇見的美好。只要回頭看看，那些腳印一直都在身後，閃閃發亮。",
+
         lyrics: "當你留下腳印 轉身離開時，我會守護你 再次走向我的路",
+
         cover: "./assets/covers/sc.png",
+
         spotify: "https://open.spotify.com/track/1UHkDovEFqHzHCPyNe0BTy?si=8c47b52badeb43e4", apple: "https://music.apple.com/tw/song/scenery/1703132750"
+
     },
+
 {
+
         song: "Lost",
+
         message: "雖然失去了方向，但不代表著失敗。迷路，是為了找到一條全新的道路。",
+
         lyrics: "就算不停地徘徊著，我也要相信我的這條路",
+
         cover: "./assets/covers/wings.png",
+
         spotify: "https://open.spotify.com/track/2So2zLatKtnIP0cy3a4Fn0?si=593c08a259084f25", apple: "https://music.apple.com/tw/song/lost/1596532546"
+
     },
+
 {
+
         song: "I'm Fine",
+
         message: "即使沒有那雙拯救的手，也沒關係。也能靠自己的力量站起來，把每一天都過得很好。",
+
         lyrics: "即便這黑暗的漆黑動搖了我沉睡的夢，但我不會害怕",
+
         cover: "./assets/covers/answer.png",
+
         spotify: "https://open.spotify.com/track/7HYJqAMbKDJYRyEfUGOCBB?si=d1e6f1fd98de426e", apple: "https://music.apple.com/tw/song/im-fine/1598730975"
+
     },
+
 {
+
         song: "Good Day",
+
         message: "把今天的眼淚留在今天。抬頭看看天空吧，接下來一定會遇見更好的日子。",
+
         lyrics: "未來肯定會是Good Day",
+
         cover: "./assets/covers/gd.png",
+
         spotify: "https://open.spotify.com/track/2aTDPjGFdyBfc3lKLAAaoI?si=d4cf5982a22d4570", apple: "https://music.apple.com/tw/song/good-day/1147103014"
+
     },
+
 {
+
         song: "I'll Be There",
+
         message: "當生活讓你 感到疲憊、失去笑容時，這首歌會一直守在身邊。別擔心，隨時都能在這裡找到依靠。",
+
         lyrics: "I will be there forever",
+
         cover: "./assets/covers/happy.png",
+
         spotify: "https://open.spotify.com/track/48ZIrgOwD74LvIf3EvLTt9?si=d94ccbd56bcf4c91", apple: "https://music.apple.com/tw/song/ill-be-there/1772351429"
+
+    },
+
+{
+
+        song: "Standing Next to You",
+
+        message: "無論遇到多大的風浪與考驗，身邊那份堅定的陪伴都不會消失。抬起頭，一起並肩度過這段煎熬吧。",
+
+        lyrics: "Standing in the fire next to you",
+
+        cover: "./assets/covers/gol.png",
+
+        spotify: "https://open.spotify.com/track/2KslE17cAJNHTsI2MI0jb2?si=232495cffbcd4f68", apple: "https://music.apple.com/tw/song/standing-next-to-you/1709554997"
+
+    },
+
+{
+
+        song: "NEURON",
+
+        message: "回到最初的起點，感受血液裡那份熱血的初心。 這不是結束，而是帶著靈魂的節奏，重新出發的時刻。",
+
+        lyrics: "I’ll tell you again. We’ll never ever give up, forever ",
+
+        cover: "./assets/covers/ots.png",
+
+        spotify: "https://open.spotify.com/track/11sirgYaEutV40tkvgpHN6?si=396ab7979243434d", apple: "https://music.apple.com/tw/song/neuron/1730608094"
+
+    },
+
+{
+
+        song: "Closer Than This",
+
+        message: "即使短暫鬆開了手，也不要輕易哭泣。那份溫柔的約定從未改變，春天來臨時一定會重逢。",
+
+        lyrics: "雖然暫時放開手，但這只是個小小的休止符 ",
+
+        cover: "./assets/covers/closer.png",
+
+        spotify: "https://open.spotify.com/track/3k6q0O9JnO2GhvD6C8fs20?si=f02162155fbb49c3", apple: "https://music.apple.com/tw/song/closer-than-this/1721409260"
+
+    },
+
+{
+
+        song: "Heaven",
+
+        message: "別人的評價不需要放在心上。讓心情保持輕鬆，把平靜留給自己，這就是最好的天堂。",
+
+        lyrics: "Feelin' so full here with me. Everything's untakeable",
+
+        cover: "./assets/covers/rpwp.png",
+
+        spotify: "https://open.spotify.com/track/1B9HE8h6ZnljGk0LZ2H30D?si=a9293409e7364e81", apple: "https://music.apple.com/tw/song/heaven/1742630133"
+
+    },
+
+{
+
+        song: "Christmas Tree",
+
+        message: "當外面的世界變得冰冷時，冬日裡突然亮起的溫暖燈火，會安靜的陪伴、一直守候在你身旁。",
+
+        lyrics: "I just want to be where you are",
+
+        cover: "./assets/covers/tree.png",
+
+        spotify: "https://open.spotify.com/track/186NCtNk1tUYS7c2DxgJ7O?si=c57a2b83151c4bde", apple: "https://music.apple.com/tw/song/christmas-tree/1601381961"
+
+    },
+
+{
+
+        song: "Outro : Ego",
+
+        message: "回頭看，走過的路都是正確的答案。相信當下的選擇吧，接下來的路，只需充滿自信地向前奔跑。",
+
+        lyrics: "心之所向，行之所向。",
+
+        cover: "./assets/covers/7.png",
+
+        spotify: "https://open.spotify.com/track/2LVw2bIK99go1NdD77dUCW?si=7e2912fd85c6430a", apple: "https://music.apple.com/tw/song/outro-ego/1599363213"
+
+    },
+
+{
+
+        song: "Sweet Dream",
+
+        message: "把白天的疲憊留在門外吧。讓心靈隨著音樂盒般的節奏慢慢沉澱，放心地閉上眼睛，溫暖地沉浸在甜美的夢境中。",
+
+        lyrics: "You light up my life, you’re like a diamond",
+
+        cover: "./assets/covers/sd.png",
+
+        spotify: "https://open.spotify.com/track/1yX9gy5fK02j6nBnGJ1S3k?si=9e0ef0695d7744d1", apple: "https://music.apple.com/tw/song/sweet-dreams/1798229715"
+
+    },
+
+{
+
+        song: "Life Goes On",
+
+        message: "就算世界突然改變，那些珍貴的回憶也不會消失。別害怕，時間在流轉，生活依然會溫柔地繼續前進。",
+
+        lyrics: "不會再害怕，奔跑直到我人生的盡頭。",
+
+        cover: "./assets/covers/day.png",
+
+        spotify: "https://open.spotify.com/track/7gv3UYPh05ZDP7Io5BIsn7?si=6e166391c656456e", apple: "https://music.apple.com/tw/song/life-goes-on/1681824537"
+
+    },
+
+{
+
+        song: "Take Two",
+
+        message: "時間過得再快、世界再怎麼變都別擔心。那些一起看過的風景與約定都在心裡，未來的路依然會並肩走下去。",
+
+        lyrics: "因為有你在，才變得幸福",
+
+        cover: "./assets/covers/tt.png",
+
+        spotify: "https://open.spotify.com/track/5IAESfJjmOYu7cHyX557kz?si=2fa26b346c0b4a6d", apple: "https://music.apple.com/tw/song/take-two/1690421575"
+
     },
 {
-        song: "Standing Next to You",
-        message: "無論遇到多大的風浪與考驗，身邊那份堅定的陪伴都不會消失。抬起頭，一起並肩度過這段煎熬吧。",
-        lyrics: "Standing in the fire next to you",
-        cover: "./assets/covers/gol.png",
-        spotify: "https://open.spotify.com/track/2KslE17cAJNHTsI2MI0jb2?si=232495cffbcd4f68", apple: "https://music.apple.com/tw/song/standing-next-to-you/1709554997"
+
+        song: "My Universe",
+
+        message: "不管外面的世界有多少限制與阻礙。那顆一直在黑夜裡守護、照亮前路的星球，就是最美的宇宙。",
+
+        lyrics: "You, you are my universe and I just want to put you first",
+
+        cover: "./assets/covers/my.png",
+
+        spotify: "https://open.spotify.com/track/3FeVmId7tL5YN8B7R3imoM?si=b67cde74e8844fef", apple: "https://music.apple.com/tw/song/my-universe/1586356916"
+
+    },
+{
+
+        song: "For Youth",
+
+        message: "一路上走來的每一段青春風景，我們都因為有了彼此而閃閃發亮。未來的日子，這份溫暖的陪伴也會一直都在。",
+
+        lyrics: "因為我們在一起才如此閃耀",
+
+        cover: "./assets/covers/proof.png",
+
+        spotify: "https://open.spotify.com/track/4JzCFEc3O2UEdjKzevvFH5?si=effbd112a0854dca", apple: "https://music.apple.com/tw/song/for-youth/1627577723"
+
+    },
+{
+
+        song: "24/7=heaven",
+
+        message: "一整個星期、二十四小時都值得期待。把壓力拋在腦後，今天就帶著約會般的心情，快樂地過日子吧。",
+
+        lyrics: "一天中不知道有多少次，不由自主地露出微笑",
+
+        cover: "./assets/covers/dw.png",
+
+        spotify: "https://open.spotify.com/track/17SBD4aDKo9ZeahcQJ6j72?si=72181cfb80a8415a", apple: "https://music.apple.com/tw/song/24-7-heaven/1597017525"
+
+    },
+{
+
+        song: "No More Dream",
+
+        message: "人生的路本來就該由自己決定，拋開那些沉重的包袱，去探索能讓自己感到快樂的方向吧。",
+
+        lyrics: "那段只受到壓迫的人生，試著成為自己生命的主宰吧",
+
+        cover: "./assets/covers/24.png",
+
+        spotify: "https://open.spotify.com/track/089PFeXotzDLNQz9NCk6pF?si=c6ee7cd3ca6a4c6a", apple: "https://music.apple.com/tw/song/no-more-dream/1596528617"
+
+    },
+{
+
+        song: "If I Ruled The World",
+
+        message: "放任想像力在夜空裡自由飛翔吧。在專屬的夢想國度，大膽地在腦海裡勾勒風景，生活本該擁有無數種可能。",
+
+        lyrics: "雖然是個不可理喻的夢，但 it's my dream，別取笑我",
+
+        cover: "./assets/covers/ou.png",
+
+        spotify: "https://open.spotify.com/track/4bLtrrVDspeDNSaHGGMQkB?si=4ef968a786bf4f64", apple: "https://music.apple.com/tw/song/if-i-ruled-the-world/1596529736"
+
+    },
+{
+
+        song: "Crystal Snow",
+
+        message: "有些緣分如同掌心裡的雪花。雖然看似無比微小、轉瞬即逝，卻在心底留下了最純粹且永恆的溫度。",
+
+        lyrics: "愛的溫度，融化所有 melody",
+
+        cover: "./assets/covers/fy.png",
+
+        spotify: "https://open.spotify.com/track/6NbfFVZ01Ttvvqmcok8DxL?si=5d6aa359524445ef", apple: "https://music.apple.com/tw/song/crystal-snow/1361623732"
+
+    },
+{
+
+        song: "Your eyes tell",
+
+        message: "即便眼前的世界被迷霧籠罩。目光交會時的那份溫暖與默契，終會驅散黑暗、照亮前路。",
+
+        lyrics: "總有一天，憂傷將使我們緊緊相連在一起",
+
+        cover: "./assets/covers/mos journey.png",
+
+        spotify: "https://open.spotify.com/track/3TZ7NHkMT82AhwuYsd00Hz?si=48b5c776aa4543b3", apple: "https://music.apple.com/tw/song/your-eyes-tell/1517969731"
+
     }
 ];
 
