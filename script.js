@@ -594,7 +594,7 @@ const btsUniverseFortunes = [
 
         song: "I'll Be There",
 
-        message: "當生活讓你 感到疲憊、失去笑容時，這首歌會一直守在身邊。別擔心，隨時都能在這裡找到依靠。",
+        message: "當生活讓你感到疲憊、失去笑容時，這首歌會一直守在身邊。別擔心，隨時都能在這裡找到依靠。",
 
         lyrics: "I will be there forever",
 
